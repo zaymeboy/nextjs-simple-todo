@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 //get all tasks
 export async function GET() {
-    const { data, error } = await supabase.from("tasks").select("*");
+    const { data, error } = await supabase.from("tasks").select("*").order("created_at" ,{ascending:false});
     if (error) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
